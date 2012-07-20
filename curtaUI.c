@@ -190,6 +190,7 @@ static void changeOperand(tDigitPos pos, tDigit oldValue, tDigit newValue)
 
     xPos = SLIDER_X_BORDER + (SLIDER_BAR_SPACING * (NUM_OPERAND_DIGITS - pos - 1));
 
+    playSound(100, 10);
     drawText(xPos, newValue);
     drawSlider(xPos, oldValue, SELECTED_SLIDER_BAR_COLOR);
     drawSlider(xPos, newValue, SELECTED_SLIDER_COLOR);
@@ -277,6 +278,16 @@ static tAction getNextAction(void)
 
     joyState = joy_read(JOY_1);
     joyPos = getJoyPos(joyState);
+
+    if ((joyPos != JOY_POS_CENTER) && 
+        (joyPos != JOY_POS_DOWN)) {
+        if (possibleActions == (1 << ACTION_ADD)) {
+            playSound(400, 10);
+        }
+        if (possibleActions == (1 << ACTION_SUBTRACT)) {
+            playSound(100, 10);
+        }
+    }
 
     if (joyPos == oldJoyPos) {
         oldJoyState = joyState;
@@ -378,6 +389,9 @@ static tAction getNextAction(void)
                 possibleActions = 0;
             } else if (joyPos != oldJoyPos + 1) {
                 possibleActions &= (~(1 << ACTION_CLEAR));
+            } else if ((joyPos == JOY_POS_UP_LEFT) ||
+                       (joyPos == JOY_POS_DOWN_RIGHT)) {
+                playSound(100, 50);
             }
         }
 
@@ -437,23 +451,25 @@ bool processNextEvent(void)
             break;
 
         case ACTION_OPERAND_INC:
-            playSound(100, 100);
             incOperandPos(selectedOperand);
             break;
 
         case ACTION_OPERAND_DEC:
-            playSound(100, 100);
             decOperandPos(selectedOperand);
             break;
 
         case ACTION_RESULT_SHIFT_LEFT:
             shiftResultPos(true);
+            playSound(100,10);
             printState();
+            playSound(200,20);
             break;
 
         case ACTION_RESULT_SHIFT_RIGHT:
             shiftResultPos(false);
+            playSound(100,10);
             printState();
+            playSound(200,20);
             break;
 
         case ACTION_ADD:
