@@ -20,7 +20,8 @@ tDigitPos basePos;
 tDigitPos selectedOperand;
 
 
-static operandChangeNotif operandCallback = NULL;
+static tOperandDigitChange operandDigitCallback = NULL;
+static tSelectedOperandChange selectedOperandCallback = NULL;
 
 
 void clearDevice(void)
@@ -36,11 +37,12 @@ void clearDevice(void)
 }
 
 
-void initDevice(operandChangeNotif callback)
+void initDevice(tOperandDigitChange callback1, tSelectedOperandChange callback2)
 {
     tDigitPos pos;
 
-    operandCallback = callback;
+    operandDigitCallback = callback1;
+    selectedOperandCallback = callback2;
 
     clearDevice();
     basePos = 0;
@@ -54,29 +56,37 @@ void initDevice(operandChangeNotif callback)
 
 void incOperandPos(tDigitPos pos)
 {
+    tDigit oldValue;
+
     if (!IS_VALID_OPERAND_POS(pos))
         return;
 
     if (operand[pos] == 9)
         return;
 
+    oldValue = operand[pos];
     operand[pos]++;
-    if (operandCallback != NULL)
-        operandCallback(pos);
+
+    if (operandDigitCallback != NULL)
+        operandDigitCallback(pos, oldValue, operand[pos]);
 }
 
 
 void decOperandPos(tDigitPos pos)
 {
+    tDigit oldValue;
+
     if (!IS_VALID_OPERAND_POS(pos))
         return;
 
     if (operand[pos] == 0)
         return;
 
+    oldValue = operand[pos];
     operand[pos]--;
-    if (operandCallback != NULL)
-        operandCallback(pos);
+
+    if (operandDigitCallback != NULL)
+        operandDigitCallback(pos, oldValue, operand[pos]);
 }
 
 
@@ -98,9 +108,9 @@ void shiftOperandPos(bool left)
     }
 
     selectedOperand = newPos;
-    if (operandCallback != NULL) {
-        operandCallback(oldPos);
-        operandCallback(newPos);
+    if (selectedOperandCallback != NULL) {
+        selectedOperandCallback(oldPos);
+        selectedOperandCallback(newPos);
     }
 }
 

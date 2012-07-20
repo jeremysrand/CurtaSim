@@ -40,13 +40,14 @@ extern tDigitPos basePos;
 #define IS_VALID_BASE_POS(pos) (((pos) >= BASE_POS_MIN) && ((pos) < BASE_POS_MAX))
 
 extern tDigitPos selectedOperand;
-#define IS_SELECTED_OPERAND(pos) ((pos) == selectedOperand);
+#define IS_SELECTED_OPERAND(pos) ((pos) == selectedOperand)
 
 
-typedef void (*operandChangeNotif)(tDigitPos pos);
+typedef void (*tOperandDigitChange)(tDigitPos pos, tDigit oldValue, tDigit newValue);
+typedef void (*tSelectedOperandChange)(tDigitPos pos);
 
 extern void clearDevice(void);
-extern void initDevice(operandChangeNotif callback);
+extern void initDevice(tOperandDigitChange callback1, tSelectedOperandChange callback2);
 
 extern void incOperandPos(tDigitPos pos);
 extern void decOperandPos(tDigitPos pos);

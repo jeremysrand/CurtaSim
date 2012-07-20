@@ -69,81 +69,161 @@ typedef int8_t tJoyPos;
 #define SLIDER_Y_SPACING (SLIDER_HEIGHT + (2 * SLIDER_Y_OFFSET))
 
 
-static void printCounter(void)
-{
-    tDigitPos pos;
+static char displayBuffer[] = 
+"\n\n"
+"Counter:               0 0 0 0 0 0 0 0\n"
+" Result: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n"
+"                                     ^";
 
-    printf("Counter:              ");
-    for(pos = NUM_COUNTER_DIGITS - 1; pos >= 0; pos--) {
-        printf(" %d", GET_COUNTER_DIGIT(pos));
+#define COUNTER_OFFSET 25
+#define RESULT_OFFSET 50
+#define BASE_OFFSET 103
+
+
+static void playSound(int freq, int duration)
+{
+    while (duration > 0) {
+        asm ("STA %w", 0xc030);
+        while (freq > 0) {
+            freq--;
+        }
+        duration--;
     }
-    printf("\n");
 }
 
 
-static void printResult(void)
+static void updateCounter(void)
 {
     tDigitPos pos;
+    char *ptr = &(displayBuffer[COUNTER_OFFSET]);
 
-    printf(" Result:");
+    for(pos = NUM_COUNTER_DIGITS - 1; pos >= 0; pos--) {
+        *ptr = GET_COUNTER_DIGIT(pos) + '0';
+        ptr+=2;
+    }
+}
+
+
+static void updateResult(void)
+{
+    tDigitPos pos;
+    char *ptr = &(displayBuffer[RESULT_OFFSET]);
+
     for(pos = NUM_RESULT_DIGITS - 1; pos >= 0; pos--) {
-        printf(" %d", GET_RESULT_DIGIT(pos));
+        *ptr = GET_RESULT_DIGIT(pos) + '0';
+        ptr+=2;
     }
-    printf("\n      ");
-    for(pos = 0; pos < NUM_RESULT_DIGITS - basePos; pos++) {
-        printf("  ");
+
+    ptr = &(displayBuffer[BASE_OFFSET]);
+    for(pos = BASE_POS_MAX - 1; pos >= BASE_POS_MIN; pos--) {
+        if (pos == basePos) {
+            *ptr = '^';
+        } else {
+            *ptr = ' ';
+        }
+        ptr+=2;
     }
-    printf(" ^\n");
 }
 
 
 static void printState(void)
 {
-    printCounter();
-    printResult();
+    updateCounter();
+    updateResult();
+    puts(displayBuffer);
 }
 
 
-static void drawOperand(tDigitPos pos)
+static void drawSlider(char xPos, tDigit digit, char color)
 {
-    char xPos;
+    tgi_setcolor(color);
+    tgi_bar(xPos + SLIDER_X_OFFSET,
+            SLIDER_Y_BORDER + SLIDER_Y_OFFSET + (SLIDER_Y_SPACING * digit),
+            xPos + SLIDER_X_OFFSET + SLIDER_WIDTH,
+            SLIDER_Y_BORDER + SLIDER_Y_OFFSET + (SLIDER_Y_SPACING * digit) + SLIDER_HEIGHT);
+}
+
+
+static void drawBar(char xPos, tDigit digit, bool isSelected)
+{
+    char barColor = SLIDER_BAR_COLOR;
+    char sliderColor = SLIDER_COLOR;
+
+    if (isSelected) {
+        barColor = SELECTED_SLIDER_BAR_COLOR;
+        sliderColor = SELECTED_SLIDER_COLOR;
+    }
+
+    // Draw slider bar
+    tgi_setcolor(barColor);
+    tgi_bar(xPos, SLIDER_Y_BORDER, xPos + SLIDER_BAR_WIDTH, SLIDER_Y_BORDER + SLIDER_BAR_HEIGHT);
+
+    // Draw slider
+    drawSlider(xPos, digit, sliderColor);
+}
+
+
+static void drawText(char xPos, tDigit digit)
+{
     char buffer[2];
-    tDigit digit;
 
-    if (!IS_VALID_OPERAND_POS(pos))
-        return;
-
-    xPos = SLIDER_X_BORDER + (SLIDER_BAR_SPACING * (NUM_OPERAND_DIGITS - pos - 1));
-    digit = GET_OPERAND_DIGIT(pos);
-
-    // Clear old bar
+    // Clear old text
     tgi_setcolor(COLOR_BLACK);
-    tgi_bar(xPos, 0, xPos + SLIDER_BAR_WIDTH, SLIDER_Y_BORDER + SLIDER_BAR_HEIGHT);
+    tgi_bar(xPos, 0, xPos + SLIDER_BAR_WIDTH, SLIDER_Y_BORDER - 1);
     
     // Draw text label
     buffer[0] = digit + '0';
     buffer[1] = '\0';
     tgi_setcolor(OPERAND_COLOR);
     tgi_outtextxy(xPos + OPERAND_OFFSET, 0, buffer);
+}
 
-    // Draw slider bar
-    if (selectedOperand == pos) {
-        tgi_setcolor(SELECTED_SLIDER_BAR_COLOR);
-    } else {
-        tgi_setcolor(SLIDER_BAR_COLOR);
-    }
-    tgi_bar(xPos, SLIDER_Y_BORDER, xPos + SLIDER_BAR_WIDTH, SLIDER_Y_BORDER + SLIDER_BAR_HEIGHT);
 
-    // Draw slider
-    if (selectedOperand == pos) {
-        tgi_setcolor(SELECTED_SLIDER_COLOR);
-    } else {
-        tgi_setcolor(SLIDER_COLOR);
-    }
-    tgi_bar(xPos + SLIDER_X_OFFSET,
-            SLIDER_Y_BORDER + SLIDER_Y_OFFSET + (SLIDER_Y_SPACING * digit),
-            xPos + SLIDER_X_OFFSET + SLIDER_WIDTH,
-            SLIDER_Y_BORDER + SLIDER_Y_OFFSET + (SLIDER_Y_SPACING * digit) + SLIDER_HEIGHT);
+static void changeOperand(tDigitPos pos, tDigit oldValue, tDigit newValue)
+{
+    char xPos;
+    char barColor = SELECTED_SLIDER_BAR_COLOR;
+    char sliderColor = SELECTED_SLIDER_COLOR;
+
+    if (!IS_VALID_OPERAND_POS(pos))
+        return;
+
+    xPos = SLIDER_X_BORDER + (SLIDER_BAR_SPACING * (NUM_OPERAND_DIGITS - pos - 1));
+
+    drawText(xPos, newValue);
+    drawSlider(xPos, oldValue, SELECTED_SLIDER_BAR_COLOR);
+    drawSlider(xPos, newValue, SELECTED_SLIDER_COLOR);
+}
+
+
+static void changeSelectedOperand(tDigitPos pos)
+{
+    char xPos;
+    tDigit digit;
+
+    if (!IS_VALID_OPERAND_POS(pos))
+        return;
+
+    digit = GET_OPERAND_DIGIT(pos);
+    xPos = SLIDER_X_BORDER + (SLIDER_BAR_SPACING * (NUM_OPERAND_DIGITS - pos - 1));
+
+    drawBar(xPos, digit, IS_SELECTED_OPERAND(pos));
+}
+
+
+static void drawOperand(tDigitPos pos)
+{
+    char xPos;
+    tDigit digit;
+
+    if (!IS_VALID_OPERAND_POS(pos))
+        return;
+
+    digit = GET_OPERAND_DIGIT(pos);
+    xPos = SLIDER_X_BORDER + (SLIDER_BAR_SPACING * (NUM_OPERAND_DIGITS - pos - 1));
+
+    drawText(xPos, digit);
+    drawBar(xPos, digit, IS_SELECTED_OPERAND(pos));
 }
 
 
@@ -318,7 +398,7 @@ void initUI(void)
     // Install drivers
     tDigitPos pos;
 
-    initDevice(drawOperand);
+    initDevice(changeOperand, changeSelectedOperand);
 
     joy_install(&a2e_stdjoy);
     tgi_install(&a2e_hi);
@@ -357,10 +437,12 @@ bool processNextEvent(void)
             break;
 
         case ACTION_OPERAND_INC:
+            playSound(100, 100);
             incOperandPos(selectedOperand);
             break;
 
         case ACTION_OPERAND_DEC:
+            playSound(100, 100);
             decOperandPos(selectedOperand);
             break;
 
