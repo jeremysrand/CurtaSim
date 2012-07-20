@@ -1,29 +1,30 @@
-#include <stdint.h>
-#include <stdbool.h>
-#include <stdlib.h>
+//
+//    Author: Jeremy Rand
+//      Date: July 20, 2012
+//
+// This is the implementation for the Curta emulator UI.
+//
+
+
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+#include <conio.h>
 #include <apple2.h>
 #include <apple2enh.h>
-#include <conio.h>
 #include <joystick.h>
 #include <tgi.h>
 #include <tgi/tgi-mode.h>
+
+#include "curtaModel.h"
+#include "curtaUI.h"
 
 
 // Extern symbols for joystick and graphics drivers
 extern char a2e_stdjoy;
 extern char a2e_hi;
 
-#define NUM_OPERAND_DIGITS 11
-#define NUM_RESULT_DIGITS 15
-#define NUM_COUNTER_DIGITS 8
 
-typedef int8_t tDigit;
-typedef int8_t tDigitPos;
 typedef int8_t tAction;
-typedef int8_t tJoyPos;
 
 #define ACTION_OPERAND_SHIFT_LEFT 0
 #define ACTION_OPERAND_SHIFT_RIGHT 1
@@ -36,6 +37,9 @@ typedef int8_t tJoyPos;
 #define ACTION_CLEAR 8
 #define ACTION_NULL 9
 
+
+typedef int8_t tJoyPos;
+
 #define JOY_POS_CENTER 0
 #define JOY_POS_DOWN 1
 #define JOY_POS_DOWN_LEFT 2
@@ -45,16 +49,6 @@ typedef int8_t tJoyPos;
 #define JOY_POS_UP_RIGHT 6
 #define JOY_POS_RIGHT 7
 #define JOY_POS_DOWN_RIGHT 8
-
-tDigit operand[NUM_OPERAND_DIGITS];
-tDigit result[NUM_RESULT_DIGITS];
-tDigit counter[NUM_COUNTER_DIGITS];
-
-// Ranges from 0 to 8
-#define RESULT_POS_MIN 0
-#define RESULT_POS_MAX 8
-tDigitPos resultPos;
-tDigitPos selectedOperand;
 
 
 #define OPERAND_COLOR COLOR_WHITE
@@ -76,148 +70,7 @@ tDigitPos selectedOperand;
 #define SLIDER_Y_SPACING (SLIDER_HEIGHT + (2 * SLIDER_Y_OFFSET))
 
 
-void drawOperand(tDigitPos pos);
-
-
-void clearDevice(void)
-{
-    tDigitPos pos;
-    
-    for (pos = 0; pos < NUM_RESULT_DIGITS; pos++) {
-        result[pos] = 0;
-    }
-    for (pos = 0; pos < NUM_COUNTER_DIGITS; pos++) {
-        counter[pos] = 0;
-    }
-}
-
-
-void resetDevice(void)
-{
-    tDigitPos pos;
-
-    clearDevice();
-    resultPos = 0;
-    selectedOperand = 0;
-
-    for (pos = 0; pos < NUM_OPERAND_DIGITS; pos++) {
-        result[pos] = 0;
-    }
-}
-    
-
-void incOperandPos(tDigitPos pos)
-{
-    if (pos >= NUM_OPERAND_DIGITS)
-        return;
-
-    if (operand[pos] == 9)
-        return;
-
-    operand[pos]++;
-    drawOperand(pos);
-}
-
-
-void decOperandPos(tDigitPos pos)
-{
-    if (pos >= NUM_OPERAND_DIGITS)
-        return;
-
-    if (operand[pos] == 0)
-        return;
-
-    operand[pos]--;
-    drawOperand(pos);
-}
-
-
-void shiftOperandPos(bool left)
-{
-    tDigitPos newPos = selectedOperand;
-    tDigitPos oldPos = selectedOperand;
-
-    if (left) {
-        newPos++;
-        if (newPos >= NUM_OPERAND_DIGITS) {
-            return;
-        }
-    } else {
-        newPos--;
-        if (newPos < 0) {
-            return;
-        }
-    }
-
-    selectedOperand = newPos;
-    drawOperand(oldPos);
-    drawOperand(newPos);
-}
-
-void shiftResultPos(bool left)
-{
-    if (left) {
-        if (resultPos + 1 >= RESULT_POS_MAX)
-            return;
-        resultPos++;
-    } else {
-        if (resultPos <= RESULT_POS_MIN)
-            return;
-        resultPos--;
-    }
-}
-
-
-void subOperation(tDigit *digits, tDigitPos pos, tDigitPos maxPos, tDigit toSub)
-{
-    if (toSub == 0)
-        return;
-
-    if (pos >= maxPos)
-        return;
-
-    digits[pos]-=toSub;
-    while (digits[pos] < 0) {
-        digits[pos]+=10;
-        subOperation(digits, pos+1, maxPos, 1);
-    }
-}
-
-
-void addOperation(tDigit *digits, tDigitPos pos, tDigitPos maxPos, tDigit toAdd)
-{
-    if (toAdd == 0)
-        return;
-
-    if (pos >= maxPos)
-        return;
-
-    digits[pos]+=toAdd;
-    while (digits[pos] > 9) {
-        digits[pos]-=10;
-        addOperation(digits, pos+1, maxPos, 1);
-    }
-}
-
-
-void crank(bool isSubtract)
-{
-    tDigitPos pos;
-    if (isSubtract) {
-        subOperation(counter, resultPos, NUM_COUNTER_DIGITS, 1);
-        for (pos = 0; pos < NUM_OPERAND_DIGITS; pos++) {
-            subOperation(result, resultPos+pos, NUM_RESULT_DIGITS, operand[pos]);
-        }
-    } else {
-        addOperation(counter, resultPos, NUM_COUNTER_DIGITS, 1);
-        for (pos = 0; pos < NUM_OPERAND_DIGITS; pos++) {
-            addOperation(result, resultPos+pos, NUM_RESULT_DIGITS, operand[pos]);
-        }
-    }
-}
-
-
-void printDigits(char *label, tDigit *digits, tDigitPos maxPos)
+static void printDigits(char *label, tDigit *digits, tDigitPos maxPos)
 {
     tDigitPos pos;
 
@@ -229,33 +82,31 @@ void printDigits(char *label, tDigit *digits, tDigitPos maxPos)
 }
 
 
-void printState(void)
+static void printState(void)
 {
     tDigitPos pos;
     printDigits("Counter", counter, NUM_COUNTER_DIGITS);
     printDigits("Result", result, NUM_RESULT_DIGITS);
 
     printf("      ");
-    for(pos = 0; pos < NUM_RESULT_DIGITS - resultPos; pos++) {
+    for(pos = 0; pos < NUM_RESULT_DIGITS - basePos; pos++) {
         printf("  ");
     }
     printf(" ^\n");
 }
 
 
-void drawOperand(tDigitPos pos)
+static void drawOperand(tDigitPos pos)
 {
     char xPos;
     char buffer[2];
     tDigit digit;
 
-    if (pos < 0)
-        return;
-    if (pos >= NUM_OPERAND_DIGITS)
+    if (!IS_VALID_OPERAND_POS(pos))
         return;
 
     xPos = SLIDER_X_BORDER + (SLIDER_BAR_SPACING * (NUM_OPERAND_DIGITS - pos - 1));
-    digit = operand[pos];
+    digit = GET_OPERAND_DIGIT(pos);
 
     // Clear old bar
     tgi_setcolor(COLOR_BLACK);
@@ -288,7 +139,7 @@ void drawOperand(tDigitPos pos)
 }
 
 
-tJoyPos getJoyPos(char joyState)
+static tJoyPos getJoyPos(char joyState)
 {
     if (JOY_BTN_UP(joyState)) {
         if (JOY_BTN_LEFT(joyState)) {
@@ -318,7 +169,7 @@ tJoyPos getJoyPos(char joyState)
 }
 
 
-tAction getNextAction(void)
+static tAction getNextAction(void)
 {
     static bool firstCall = true;
     static char oldJoyState;
@@ -448,10 +299,12 @@ tAction getNextAction(void)
 }
 
 
-void graphicalInterface(void)
+void initUI(void)
 {
     // Install drivers
     tDigitPos pos;
+
+    initDevice(drawOperand);
 
     joy_install(&a2e_stdjoy);
     tgi_install(&a2e_hi);
@@ -466,66 +319,69 @@ void graphicalInterface(void)
     asm ("STA %w", 0xc053);
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printState();
-
-    while (true) {
-        if ((kbhit()) &&
-            (cgetc() == ' ')) {
-            break;
-        }
-        switch (getNextAction()) {
-            case ACTION_NULL:
-                break;
-            case ACTION_OPERAND_SHIFT_LEFT:
-                shiftOperandPos(true);
-                break;
-
-            case ACTION_OPERAND_SHIFT_RIGHT:
-                shiftOperandPos(false);
-                break;
-
-            case ACTION_OPERAND_INC:
-                incOperandPos(selectedOperand);
-                break;
-
-            case ACTION_OPERAND_DEC:
-                decOperandPos(selectedOperand);
-                break;
-
-            case ACTION_RESULT_SHIFT_LEFT:
-                shiftResultPos(true);
-                printState();
-                break;
-
-            case ACTION_RESULT_SHIFT_RIGHT:
-                shiftResultPos(false);
-                printState();
-                break;
-
-            case ACTION_ADD:
-                crank(false);
-                printState();
-                break;
-
-            case ACTION_SUBTRACT:
-                crank(true);
-                printState();
-                break;
-
-            case ACTION_CLEAR:
-                clearDevice();
-                printState();
-                break;
-        }
-    }
-   
-    // Uninstall drivers
-    tgi_uninstall(); 
-    joy_uninstall();
 }
 
 
-int main(void)
+bool processNextEvent(void)
 {
-    graphicalInterface();
-    return 0;
+    bool timeToQuit = false;
+
+    // Exit on ESC
+    if ((kbhit()) &&
+        (cgetc() == 27)) {
+        timeToQuit = true;
+    }
+    switch (getNextAction()) {
+        case ACTION_NULL:
+            break;
+        case ACTION_OPERAND_SHIFT_LEFT:
+            shiftOperandPos(true);
+            break;
+
+        case ACTION_OPERAND_SHIFT_RIGHT:
+            shiftOperandPos(false);
+            break;
+
+        case ACTION_OPERAND_INC:
+            incOperandPos(selectedOperand);
+            break;
+
+        case ACTION_OPERAND_DEC:
+            decOperandPos(selectedOperand);
+            break;
+
+        case ACTION_RESULT_SHIFT_LEFT:
+            shiftResultPos(true);
+            printState();
+            break;
+
+        case ACTION_RESULT_SHIFT_RIGHT:
+            shiftResultPos(false);
+            printState();
+            break;
+
+        case ACTION_ADD:
+            crank(false);
+            printState();
+            break;
+
+        case ACTION_SUBTRACT:
+            crank(true);
+            printState();
+            break;
+
+        case ACTION_CLEAR:
+            clearDevice();
+            printState();
+            break;
+    }
+    return timeToQuit;
+}
+  
+
+void shutdownUI(void)
+{   
+    // Uninstall drivers
+    tgi_uninstall(); 
+    joy_uninstall();
 }
