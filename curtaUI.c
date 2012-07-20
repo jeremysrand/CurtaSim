@@ -70,29 +70,38 @@ typedef int8_t tJoyPos;
 #define SLIDER_Y_SPACING (SLIDER_HEIGHT + (2 * SLIDER_Y_OFFSET))
 
 
-static void printDigits(char *label, tDigit *digits, tDigitPos maxPos)
+static void printCounter(void)
 {
     tDigitPos pos;
 
-    printf("%7s:", label);
-    for(pos = maxPos - 1; pos >= 0; pos--) {
-        printf(" %d", digits[pos]);
+    printf("Counter:              ");
+    for(pos = NUM_COUNTER_DIGITS - 1; pos >= 0; pos--) {
+        printf(" %d", GET_COUNTER_DIGIT(pos));
     }
     printf("\n");
 }
 
 
-static void printState(void)
+static void printResult(void)
 {
     tDigitPos pos;
-    printDigits("Counter", counter, NUM_COUNTER_DIGITS);
-    printDigits("Result", result, NUM_RESULT_DIGITS);
 
-    printf("      ");
+    printf(" Result:");
+    for(pos = NUM_RESULT_DIGITS - 1; pos >= 0; pos--) {
+        printf(" %d", GET_RESULT_DIGIT(pos));
+    }
+    printf("\n      ");
     for(pos = 0; pos < NUM_RESULT_DIGITS - basePos; pos++) {
         printf("  ");
     }
     printf(" ^\n");
+}
+
+
+static void printState(void)
+{
+    printCounter();
+    printResult();
 }
 
 
@@ -190,11 +199,7 @@ static tAction getNextAction(void)
     joyState = joy_read(JOY_1);
     joyPos = getJoyPos(joyState);
 
-    if ((JOY_BTN_FIRE2(oldJoyState) &&
-        (!JOY_BTN_FIRE2(joyState)))) {
-        oldJoyState = joyState;
-        result = ACTION_CLEAR;
-    } else if (joyPos == oldJoyPos) {
+    if (joyPos == oldJoyPos) {
         oldJoyState = joyState;
         return result;
     } else if (oldJoyPos == JOY_POS_CENTER) {
@@ -216,6 +221,8 @@ static tAction getNextAction(void)
             possibleActions = (1 << ACTION_OPERAND_INC);
             if (JOY_BTN_FIRE(joyState)) {
                 possibleActions |= (1 << ACTION_SUBTRACT);
+            } else if (JOY_BTN_FIRE2(joyState)) {
+                possibleActions |= (1 << ACTION_CLEAR);
             } else {
                 possibleActions |= (1 << ACTION_ADD);
             }
@@ -284,6 +291,14 @@ static tAction getNextAction(void)
                 possibleActions = 0;
             } else if (joyPos != oldJoyPos + 1) {
                 possibleActions &= (~(1 << ACTION_SUBTRACT));
+            }
+        } else if (possibleActions & (1 << ACTION_CLEAR)) {
+            if ((joyPos == JOY_POS_DOWN) &&
+                (oldJoyPos == JOY_POS_DOWN_RIGHT)) {
+                result = ACTION_CLEAR;
+                possibleActions = 0;
+            } else if (joyPos != oldJoyPos + 1) {
+                possibleActions &= (~(1 << ACTION_CLEAR));
             }
         }
 
