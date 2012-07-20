@@ -69,6 +69,13 @@ typedef int8_t tJoyPos;
 #define SLIDER_Y_SPACING (SLIDER_HEIGHT + (2 * SLIDER_Y_OFFSET))
 
 
+// Bad news here.  This code in this module uses the defines for the
+// number of digits in counter and result except for this display
+// buffer and the offsets into it.  The code assumes a specific size.
+// It doesn't really have to.  I could build the template string at
+// runtime and even statically allocate the buffer based on a formula
+// of the sizes, but that just seemed too much work.  Fix it if you
+// want to change the width of these fields
 static char displayBuffer[] = 
 "\n\n"
 "Counter:               0 0 0 0 0 0 0 0\n"
