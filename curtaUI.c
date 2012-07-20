@@ -10,7 +10,6 @@
 #include <string.h>
 #include <conio.h>
 #include <apple2.h>
-#include <apple2enh.h>
 #include <joystick.h>
 #include <tgi.h>
 #include <tgi/tgi-mode.h>

@@ -8,7 +8,7 @@ C_OBJS=$(SRCS:.c=.o)
 ASM_OBJS=$(ASM:.s=.o)
 OBJS=$(C_OBJS) $(ASM_OBJS)
 
-PLATFORM=apple2enh
+PLATFORM=apple2
 #PLATFORM_CFG=-C $(PLATFORM)-loader.cfg
 PLATFORM_CFG=--start-addr '$$4000'
 
