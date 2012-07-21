@@ -16,8 +16,16 @@ MAPFILE=curta.map
 
 all:    $(BIN)
 
+# Big hack here.  The joystick library from cc65 only considers a
+# jostick centered if it is within 20 of 127 which is very tight.
+# Thus the tests for $6B and $93.  The good news is that the only
+# occurrences of these bytes in the binary image are for these
+# comparisons.  So, I just do a global search and replace.  The
+# new threshold I am using is +/- 60 from 127.
 a2e.stdjoy.s:
 	co65 --code-label _a2e_stdjoy -o $@ $(CC65_HOME)/joy/a2e.stdjoy.joy
+	sed -i .tmp 's/\$$6B/$$43/g' a2e.stdjoy.s
+	sed -i .tmp 's/\$$93/$$BB/g' a2e.stdjoy.s
 
 a2e.hi.s:
 	co65 --code-label _a2e_hi -o $@ $(CC65_HOME)/tgi/a2e.hi.tgi
