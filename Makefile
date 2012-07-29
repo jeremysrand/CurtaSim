@@ -1,4 +1,7 @@
 BIN=curta.bin
+SYS=curta.system.sys
+
+INSTALL_DIR=~/Documents/"Apple ]["/Transfer
 
 GEN_ASM=a2e.hi.s
 SRCS=$(wildcard *.c)
@@ -9,7 +12,6 @@ ASM_OBJS=$(ASM:.s=.o)
 OBJS=$(C_OBJS) $(ASM_OBJS)
 
 PLATFORM=apple2
-#PLATFORM_CFG=-C $(PLATFORM)-loader.cfg
 PLATFORM_CFG=--start-addr '$$4000'
 
 MAPFILE=curta.map
@@ -31,4 +33,5 @@ clean:
 	rm -f $(BIN) $(OBJS) $(GEN_ASM) $(MAPFILE)
 
 install: $(BIN)
-	cp $(BIN) ~/Documents/"Apple ]["/Transfer
+	cp $(BIN) $(INSTALL_DIR)
+	cp $(SYS) $(INSTALL_DIR)
