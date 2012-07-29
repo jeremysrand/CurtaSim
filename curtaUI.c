@@ -8,8 +8,6 @@
 
 #include <stdio.h>
 #include <stddef.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include <string.h>
 #include <conio.h>
 #include <apple2.h>

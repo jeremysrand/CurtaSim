@@ -6,6 +6,10 @@
 //
 
 
+#include <stdint.h>
+#include <stdbool.h>
+
+
 #ifndef _CURTAMODEL_H
 #define _CURTAMODEL_H
 
