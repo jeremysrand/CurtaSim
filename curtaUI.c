@@ -7,6 +7,9 @@
 
 
 #include <stdio.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 #include <string.h>
 #include <conio.h>
 #include <apple2.h>
@@ -15,11 +18,11 @@
 #include <tgi/tgi-mode.h>
 
 #include "curtaModel.h"
+#include "joystick.h"
 #include "curtaUI.h"
 
 
-// Extern symbols for joystick and graphics drivers
-extern char a2e_stdjoy;
+// Extern symbols for graphics drivers
 extern char a2e_hi;
 
 
@@ -35,19 +38,6 @@ typedef int8_t tAction;
 #define ACTION_SUBTRACT 7
 #define ACTION_CLEAR 8
 #define ACTION_NULL 9
-
-
-typedef int8_t tJoyPos;
-
-#define JOY_POS_CENTER 0
-#define JOY_POS_DOWN 1
-#define JOY_POS_DOWN_LEFT 2
-#define JOY_POS_LEFT 3
-#define JOY_POS_UP_LEFT 4
-#define JOY_POS_UP 5
-#define JOY_POS_UP_RIGHT 6
-#define JOY_POS_RIGHT 7
-#define JOY_POS_DOWN_RIGHT 8
 
 
 #define OPERAND_COLOR COLOR_WHITE
@@ -87,7 +77,7 @@ static char displayBuffer[] =
 #define BASE_OFFSET 103
 
 
-static void playSound(int freq, int duration)
+static void playSound(int8_t freq, int8_t duration)
 {
     while (duration > 0) {
         asm ("STA %w", 0xc030);
@@ -235,59 +225,25 @@ static void drawOperand(tDigitPos pos)
 }
 
 
-static tJoyPos getJoyPos(char joyState)
-{
-    if (JOY_BTN_UP(joyState)) {
-        if (JOY_BTN_LEFT(joyState)) {
-            return JOY_POS_UP_LEFT;
-        } else if (JOY_BTN_RIGHT(joyState)) {
-            return JOY_POS_UP_RIGHT;
-        } else {
-            return JOY_POS_UP;
-        }
-    } else if (JOY_BTN_DOWN(joyState)) {
-        if (JOY_BTN_LEFT(joyState)) {
-            return JOY_POS_DOWN_LEFT;
-        } else if (JOY_BTN_RIGHT(joyState)) {
-            return JOY_POS_DOWN_RIGHT;
-        } else {
-            return JOY_POS_DOWN;
-        }
-    } else {
-        if (JOY_BTN_LEFT(joyState)) {
-            return JOY_POS_LEFT;
-        } else if (JOY_BTN_RIGHT(joyState)) {
-            return JOY_POS_RIGHT;
-        } else {
-            return JOY_POS_CENTER;
-        }
-    }
-}
-
-
 static tAction getNextAction(void)
 {
     static bool firstCall = true;
-    static char oldJoyState;
     static tJoyPos oldJoyPos;
     static unsigned int possibleActions = 0xffff;
 
-    char joyState;
-    tJoyPos joyPos;
+    tJoyState joyState;
     tAction result = ACTION_NULL;
 
     if (firstCall) {
-        oldJoyState = joy_read(JOY_1);
-        oldJoyPos = getJoyPos(oldJoyState);
+        oldJoyPos = JOY_POS_CENTER;
         firstCall = false;
         return result;
     }
 
-    joyState = joy_read(JOY_1);
-    joyPos = getJoyPos(joyState);
+    getJoystickState(&joyState);
 
-    if ((joyPos != JOY_POS_CENTER) && 
-        (joyPos != JOY_POS_DOWN)) {
+    if ((joyState.position != JOY_POS_CENTER) && 
+        (joyState.position != JOY_POS_DOWN)) {
         if (possibleActions == (1 << ACTION_ADD)) {
             playSound(400, 10);
         }
@@ -296,29 +252,28 @@ static tAction getNextAction(void)
         }
     }
 
-    if (joyPos == oldJoyPos) {
-        oldJoyState = joyState;
+    if (joyState.position == oldJoyPos) {
         return result;
     } else if (oldJoyPos == JOY_POS_CENTER) {
-        if (joyPos == JOY_POS_LEFT) {
-            if (JOY_BTN_FIRE(joyState)) {
+        if (joyState.position == JOY_POS_LEFT) {
+            if (joyState.button0) {
                 possibleActions = (1 << ACTION_RESULT_SHIFT_LEFT);
             } else {
                 possibleActions = (1 << ACTION_OPERAND_SHIFT_LEFT);
             }
-        } else if (joyPos == JOY_POS_RIGHT) {
-            if (JOY_BTN_FIRE(joyState)) {
+        } else if (joyState.position == JOY_POS_RIGHT) {
+            if (joyState.button0) {
                 possibleActions = (1 << ACTION_RESULT_SHIFT_RIGHT);
             } else {
                 possibleActions = (1 << ACTION_OPERAND_SHIFT_RIGHT);
             }
-        } else if (joyPos == JOY_POS_UP) {
+        } else if (joyState.position == JOY_POS_UP) {
             possibleActions = (1 << ACTION_OPERAND_DEC);
-        } else if (joyPos == JOY_POS_DOWN) {
+        } else if (joyState.position == JOY_POS_DOWN) {
             possibleActions = (1 << ACTION_OPERAND_INC);
-            if (JOY_BTN_FIRE(joyState)) {
+            if (joyState.button0) {
                 possibleActions |= (1 << ACTION_SUBTRACT);
-            } else if (JOY_BTN_FIRE2(joyState)) {
+            } else if (joyState.button1) {
                 possibleActions |= (1 << ACTION_CLEAR);
             } else {
                 possibleActions |= (1 << ACTION_ADD);
@@ -326,7 +281,7 @@ static tAction getNextAction(void)
         }
     } else {
         if (possibleActions & (1 << ACTION_OPERAND_SHIFT_LEFT)) {
-            if (joyPos == JOY_POS_CENTER) {
+            if (joyState.position == JOY_POS_CENTER) {
                 result = ACTION_OPERAND_SHIFT_LEFT;
             } else {
                 possibleActions &= (~(1 << ACTION_OPERAND_SHIFT_LEFT));
@@ -334,7 +289,7 @@ static tAction getNextAction(void)
         }
 
         if (possibleActions & (1 << ACTION_OPERAND_SHIFT_RIGHT)) {
-            if (joyPos == JOY_POS_CENTER) {
+            if (joyState.position == JOY_POS_CENTER) {
                 result = ACTION_OPERAND_SHIFT_RIGHT;
             } else {
                 possibleActions &= (~(1 << ACTION_OPERAND_SHIFT_RIGHT));
@@ -342,7 +297,7 @@ static tAction getNextAction(void)
         }
 
         if (possibleActions & (1 << ACTION_OPERAND_INC)) {
-            if (joyPos == JOY_POS_CENTER) {
+            if (joyState.position == JOY_POS_CENTER) {
                 result = ACTION_OPERAND_INC;
             } else {
                 possibleActions &= (~(1 << ACTION_OPERAND_INC));
@@ -350,7 +305,7 @@ static tAction getNextAction(void)
         }
 
         if (possibleActions & (1 << ACTION_OPERAND_DEC)) {
-            if (joyPos == JOY_POS_CENTER) {
+            if (joyState.position == JOY_POS_CENTER) {
                 result = ACTION_OPERAND_DEC;
             } else {
                 possibleActions &= (~(1 << ACTION_OPERAND_DEC));
@@ -358,7 +313,7 @@ static tAction getNextAction(void)
         }
 
         if (possibleActions & (1 << ACTION_RESULT_SHIFT_LEFT)) {
-            if (joyPos == JOY_POS_CENTER) {
+            if (joyState.position == JOY_POS_CENTER) {
                 result = ACTION_RESULT_SHIFT_LEFT;
             } else {
                 possibleActions &= (~(1 << ACTION_RESULT_SHIFT_LEFT));
@@ -366,7 +321,7 @@ static tAction getNextAction(void)
         }
 
         if (possibleActions & (1 << ACTION_RESULT_SHIFT_RIGHT)) {
-            if (joyPos == JOY_POS_CENTER) {
+            if (joyState.position == JOY_POS_CENTER) {
                 result = ACTION_RESULT_SHIFT_RIGHT;
             } else {
                 possibleActions &= (~(1 << ACTION_RESULT_SHIFT_RIGHT));
@@ -374,41 +329,40 @@ static tAction getNextAction(void)
         }
 
         if (possibleActions & (1 << ACTION_ADD)) {
-            if ((joyPos == JOY_POS_DOWN) &&
+            if ((joyState.position == JOY_POS_DOWN) &&
                 (oldJoyPos == JOY_POS_DOWN_RIGHT)) {
                 result = ACTION_ADD;
                 possibleActions = 0;
-            } else if (joyPos != oldJoyPos + 1) {
+            } else if (joyState.position != oldJoyPos + 1) {
                 possibleActions &= (~(1 << ACTION_ADD));
             }
         } else if (possibleActions & (1 << ACTION_SUBTRACT)) {
-            if ((joyPos == JOY_POS_DOWN) &&
+            if ((joyState.position == JOY_POS_DOWN) &&
                 (oldJoyPos == JOY_POS_DOWN_RIGHT)) {
                 result = ACTION_SUBTRACT;
                 possibleActions = 0;
-            } else if (joyPos != oldJoyPos + 1) {
+            } else if (joyState.position != oldJoyPos + 1) {
                 possibleActions &= (~(1 << ACTION_SUBTRACT));
             }
         } else if (possibleActions & (1 << ACTION_CLEAR)) {
-            if ((joyPos == JOY_POS_DOWN) &&
+            if ((joyState.position == JOY_POS_DOWN) &&
                 (oldJoyPos == JOY_POS_DOWN_RIGHT)) {
                 result = ACTION_CLEAR;
                 possibleActions = 0;
-            } else if (joyPos != oldJoyPos + 1) {
+            } else if (joyState.position != oldJoyPos + 1) {
                 possibleActions &= (~(1 << ACTION_CLEAR));
-            } else if ((joyPos == JOY_POS_UP_LEFT) ||
-                       (joyPos == JOY_POS_DOWN_RIGHT)) {
+            } else if ((joyState.position == JOY_POS_UP_LEFT) ||
+                       (joyState.position == JOY_POS_DOWN_RIGHT)) {
                 playSound(100, 50);
             }
         }
 
-        if (joyPos == JOY_POS_CENTER) {
+        if (joyState.position == JOY_POS_CENTER) {
             possibleActions = -1;
         }
     }
 
-    oldJoyPos = joyPos;
-    oldJoyState = joyState;
+    oldJoyPos = joyState.position;
     
     return result;
 }
@@ -421,7 +375,6 @@ void initUI(void)
 
     initDevice(changeOperand, changeSelectedOperand);
 
-    joy_install(&a2e_stdjoy);
     tgi_install(&a2e_hi);
 
     tgi_init();
@@ -502,5 +455,4 @@ void shutdownUI(void)
 {   
     // Uninstall drivers
     tgi_uninstall(); 
-    joy_uninstall();
 }
