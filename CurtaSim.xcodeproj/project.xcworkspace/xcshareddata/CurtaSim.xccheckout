@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6B9C2644-83DD-4B4D-9E1E-015442DD4FB5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CurtaSim</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F5E5AB1BBAA08E463D2E8ED01DEEF2E6239A1F73</key>
+		<string>https://github.com/jeremysrand/CurtaSim.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CurtaSim.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F5E5AB1BBAA08E463D2E8ED01DEEF2E6239A1F73</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jeremysrand/CurtaSim.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F5E5AB1BBAA08E463D2E8ED01DEEF2E6239A1F73</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F5E5AB1BBAA08E463D2E8ED01DEEF2E6239A1F73</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CurtaSim</string>
+		</dict>
+	</array>
+</dict>
+</plist>

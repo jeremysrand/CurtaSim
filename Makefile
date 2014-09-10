@@ -1,37 +1,92 @@
-BIN=curta.bin
-SYS=curta.system.sys
+#
+#  Makefile
+#  Apple2BuildPipelineSample
+#
+#  Part of a sample build pipeline for Apple ][ software development
+#
+#  Created by Quinn Dunki on 8/15/14.
+#  One Girl, One Laptop Productions
+#  http://www.quinndunki.com
+#  http://www.quinndunki.com/blondihacks
+#
 
-INSTALL_DIR=~/Documents/"Apple ]["/Transfer
+include make/head.mk
 
-GEN_ASM=a2e.hi.s
-SRCS=$(wildcard *.c)
-ASM=$(filter-out $(GEN_ASM),$(wildcard *.s)) $(GEN_ASM)
+# Customize this file to control what gets built, what machines to
+# target, where in memory to put it, etc.
 
-C_OBJS=$(SRCS:.c=.o)
-ASM_OBJS=$(ASM:.s=.o)
-OBJS=$(C_OBJS) $(ASM_OBJS)
+# The name of your system or binary file to build goes here:
+PGM=curta
 
-PLATFORM=apple2
-PLATFORM_CFG=--start-addr '$$4000'
+# Set the config you are building for.  See these pages for details:
+#   http://cc65.github.io/cc65/doc/apple2.html#s4
+#   http://cc65.github.io/cc65/doc/apple2enh.html#s4
+#
+# Uncomment the one you want below (the first one is the default):
+#    MACHINE = apple2
+#    MACHINE = apple2-dos33
+#    MACHINE = apple2-system
+#    MACHINE = apple2-loader
+#    MACHINE = apple2-reboot
+#    MACHINE = apple2enh
+#    MACHINE = apple2enh-dos33
+#    MACHINE = apple2enh-system
+#    MACHINE = apple2enh-loader
+#    MACHINE = apple2enh-reboot
+MACHINE = apple2-loader
 
-MAPFILE=curta.map
+# Uncomment and set this to your starting address in Apple ][ memory
+# if necessary:
+#    START_ADDR = 6000
+START_ADDR=4000
 
-all:    $(BIN)
+# Set the default CPU to assemble for.  You can change this in the
+# body of a .s file using control commands like ".PC02".  Uncomment
+# the one you want below (the first one is the default):
+#    CPU = 6502
+#    CPU = 65SC02
+#    CPU = 65C02
+#    CPU = 65816
+# Note: You can assemble for 65816 in 16-bit mode but the C compiler
+# will only produce 8-bit code.
 
-a2e.hi.s:
-	co65 --code-label _a2e_hi -o $@ $(CC65_HOME)/tgi/a2e.hi.tgi
+# Any *.c files in your main project directory will automatically be
+# built.  But, if you have subdirectories with C files in them, you 
+# should add them to the list of C_SRCS to build.  Do that by
+# uncommenting the following line and changing "someSubDir" to match
+# the subdirectory you have created.  Add multiple lines like this
+# for each subdirectory:
+#    C_SRCS += $(wildcard someSubDir/*.c)
 
-%.o:	%.s
-	ca65 -t $(PLATFORM) -o $@ $<
+# Any *.s files in your main project directory will automatically be
+# built.  But, if you have subdirectories with assembly files in them,
+# you should add them to the list of ASM_SRCS to build.  Do that by
+# uncommenting the following line and changing "someSubDir" to match
+# the subdirectory you have created.  Add multiple lines like this
+# for each subdirectory:
+#    ASM_SRCS += $(wildcard someSubDir/*.s)
 
-$(BIN): $(ASM_OBJS) $(SRCS)
-	cl65 -t $(PLATFORM) $(PLATFORM_CFG) --mapfile $(MAPFILE) -o $(BIN).tmp $(SRCS) $(addprefix --obj ,$(ASM_OBJS)) 
-	dd if=$(BIN).tmp of=$(BIN) bs=4 skip=1
-	rm -f $(BIN).tmp
+# If you have a non-standard cc65 install, you may need to change
+# some of these.  Uncomment the following line and change it to the
+# correct path to CC65_HOME if the default is not correct:
+#    export CC65_HOME := /usr/local/lib/cc65
+# 
+# If the path to the cc65 binaries is not correct, uncomment this
+# line and change it:
+#    CC65_BIN = /usr/local/bin
 
-clean:
-	rm -f $(BIN) $(OBJS) $(GEN_ASM) $(MAPFILE)
+# If you want to add arguments to the compile commandline, add them
+# to this variable:
+#    CFLAGS += -Os
 
-install: $(BIN)
-	cp $(BIN) $(INSTALL_DIR)
-	cp $(SYS) $(INSTALL_DIR)
+# If you want to add arguments to the assembly commandline, add them
+# to this variable:
+#    ASMFLAGS += -g
+
+# If you want to add arguments to the link commandline, add them to
+# this variable:
+#    LDFLAGS += -v
+
+
+# Do not change anything else below here...
+include make/tail.mk
