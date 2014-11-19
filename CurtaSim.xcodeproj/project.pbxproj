@@ -7,40 +7,72 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		70E84C2E19B10B3100159159 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		9D667FA119BFF5BC00717163 /* a2e.hi.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = a2e.hi.s; sourceTree = "<group>"; };
-		9D667FA219BFF5BC00717163 /* curta.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = curta.c; sourceTree = "<group>"; };
-		9D667FA319BFF5BC00717163 /* curtaModel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = curtaModel.c; sourceTree = "<group>"; };
-		9D667FA419BFF5BC00717163 /* curtaModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curtaModel.h; sourceTree = "<group>"; };
-		9D667FA519BFF5BC00717163 /* curtaUI.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = curtaUI.c; sourceTree = "<group>"; };
-		9D667FA619BFF5BC00717163 /* curtaUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curtaUI.h; sourceTree = "<group>"; };
-		9D667FA719BFF5BC00717163 /* joystick.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = joystick.c; sourceTree = "<group>"; };
-		9D667FA819BFF5BC00717163 /* joystick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = joystick.h; sourceTree = "<group>"; };
+		9D02B4DA1A1C5ADC002799E3 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		9D02B4DC1A1C5ADC002799E3 /* AppleCommander.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; name = AppleCommander.jar; path = make/AppleCommander.jar; sourceTree = "<group>"; };
+		9D02B4DD1A1C5ADC002799E3 /* createDiskImage */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = createDiskImage; path = make/createDiskImage; sourceTree = "<group>"; };
+		9D02B4DE1A1C5ADC002799E3 /* DevApple.vii */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = DevApple.vii; path = make/DevApple.vii; sourceTree = "<group>"; };
+		9D02B4DF1A1C5ADC002799E3 /* dos33_template.dsk */ = {isa = PBXFileReference; lastKnownFileType = file; name = dos33_template.dsk; path = make/dos33_template.dsk; sourceTree = "<group>"; };
+		9D02B4E01A1C5ADC002799E3 /* head.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = head.mk; path = make/head.mk; sourceTree = "<group>"; };
+		9D02B4E11A1C5ADC002799E3 /* prodos_template.dsk */ = {isa = PBXFileReference; lastKnownFileType = file; name = prodos_template.dsk; path = make/prodos_template.dsk; sourceTree = "<group>"; };
+		9D02B4E21A1C5ADC002799E3 /* tail.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = tail.mk; path = make/tail.mk; sourceTree = "<group>"; };
+		9D02B4E31A1C5ADC002799E3 /* V2Make.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = V2Make.scpt; path = make/V2Make.scpt; sourceTree = "<group>"; };
+		9D02B4E91A1C5B62002799E3 /* a2e.hi.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = a2e.hi.s; sourceTree = "<group>"; };
+		9D02B4EA1A1C5B62002799E3 /* curta.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = curta.c; sourceTree = "<group>"; };
+		9D02B4EB1A1C5B62002799E3 /* curtaModel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = curtaModel.c; sourceTree = "<group>"; };
+		9D02B4EC1A1C5B62002799E3 /* curtaModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curtaModel.h; sourceTree = "<group>"; };
+		9D02B4ED1A1C5B62002799E3 /* curtaUI.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = curtaUI.c; sourceTree = "<group>"; };
+		9D02B4EE1A1C5B62002799E3 /* curtaUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = curtaUI.h; sourceTree = "<group>"; };
+		9D02B4EF1A1C5B62002799E3 /* joystick.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = joystick.c; sourceTree = "<group>"; };
+		9D02B4F01A1C5B62002799E3 /* joystick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = joystick.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		70E84C2319B10B0500159159 = {
+		9D02B4D21A1C5ADC002799E3 = {
 			isa = PBXGroup;
 			children = (
-				70E84C2E19B10B3100159159 /* Makefile */,
-				9D667FA119BFF5BC00717163 /* a2e.hi.s */,
-				9D667FA219BFF5BC00717163 /* curta.c */,
-				9D667FA319BFF5BC00717163 /* curtaModel.c */,
-				9D667FA419BFF5BC00717163 /* curtaModel.h */,
-				9D667FA519BFF5BC00717163 /* curtaUI.c */,
-				9D667FA619BFF5BC00717163 /* curtaUI.h */,
-				9D667FA719BFF5BC00717163 /* joystick.c */,
-				9D667FA819BFF5BC00717163 /* joystick.h */,
+				9D02B4D81A1C5ADC002799E3 /* CurtaSim */,
 			);
+			sourceTree = "<group>";
+		};
+		9D02B4D81A1C5ADC002799E3 /* CurtaSim */ = {
+			isa = PBXGroup;
+			children = (
+				9D02B4E91A1C5B62002799E3 /* a2e.hi.s */,
+				9D02B4EA1A1C5B62002799E3 /* curta.c */,
+				9D02B4EB1A1C5B62002799E3 /* curtaModel.c */,
+				9D02B4EC1A1C5B62002799E3 /* curtaModel.h */,
+				9D02B4ED1A1C5B62002799E3 /* curtaUI.c */,
+				9D02B4EE1A1C5B62002799E3 /* curtaUI.h */,
+				9D02B4EF1A1C5B62002799E3 /* joystick.c */,
+				9D02B4F01A1C5B62002799E3 /* joystick.h */,
+				9D02B4DA1A1C5ADC002799E3 /* Makefile */,
+				9D02B4DB1A1C5ADC002799E3 /* make */,
+			);
+			path = CurtaSim;
+			sourceTree = "<group>";
+		};
+		9D02B4DB1A1C5ADC002799E3 /* make */ = {
+			isa = PBXGroup;
+			children = (
+				9D02B4DC1A1C5ADC002799E3 /* AppleCommander.jar */,
+				9D02B4DD1A1C5ADC002799E3 /* createDiskImage */,
+				9D02B4DE1A1C5ADC002799E3 /* DevApple.vii */,
+				9D02B4DF1A1C5ADC002799E3 /* dos33_template.dsk */,
+				9D02B4E01A1C5ADC002799E3 /* head.mk */,
+				9D02B4E11A1C5ADC002799E3 /* prodos_template.dsk */,
+				9D02B4E21A1C5ADC002799E3 /* tail.mk */,
+				9D02B4E31A1C5ADC002799E3 /* V2Make.scpt */,
+			);
+			name = make;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		70E84C2819B10B0600159159 /* CurtaSim */ = {
+		9D02B4D71A1C5ADC002799E3 /* CurtaSim */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 70E84C2B19B10B0600159159 /* Build configuration list for PBXLegacyTarget "CurtaSim" */;
+			buildArgumentsString = "-C CurtaSim $(ACTION)";
+			buildConfigurationList = 9D02B4E61A1C5ADC002799E3 /* Build configuration list for PBXLegacyTarget "CurtaSim" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
@@ -48,40 +80,40 @@
 			);
 			name = CurtaSim;
 			passBuildSettingsInEnvironment = 1;
-			productName = Apple2BuildPipelineSample;
+			productName = CurtaSim;
 		};
 /* End PBXLegacyTarget section */
 
 /* Begin PBXProject section */
-		70E84C2419B10B0500159159 /* Project object */ = {
+		9D02B4D31A1C5ADC002799E3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "One Girl, One Laptop Productions";
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Jeremy Rand";
 				TargetAttributes = {
-					70E84C2819B10B0600159159 = {
-						CreatedOnToolsVersion = 6.0;
+					9D02B4D71A1C5ADC002799E3 = {
+						CreatedOnToolsVersion = 6.1;
 					};
 				};
 			};
-			buildConfigurationList = 70E84C2719B10B0500159159 /* Build configuration list for PBXProject "CurtaSim" */;
+			buildConfigurationList = 9D02B4D61A1C5ADC002799E3 /* Build configuration list for PBXProject "CurtaSim" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 70E84C2319B10B0500159159;
+			mainGroup = 9D02B4D21A1C5ADC002799E3;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				70E84C2819B10B0600159159 /* CurtaSim */,
+				9D02B4D71A1C5ADC002799E3 /* CurtaSim */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
-		70E84C2919B10B0600159159 /* Debug */ = {
+		9D02B4E41A1C5ADC002799E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -121,7 +153,7 @@
 			};
 			name = Debug;
 		};
-		70E84C2A19B10B0600159159 /* Release */ = {
+		9D02B4E51A1C5ADC002799E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -155,7 +187,7 @@
 			};
 			name = Release;
 		};
-		70E84C2C19B10B0600159159 /* Debug */ = {
+		9D02B4E71A1C5ADC002799E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUGGING_SYMBOLS = YES;
@@ -167,7 +199,7 @@
 			};
 			name = Debug;
 		};
-		70E84C2D19B10B0600159159 /* Release */ = {
+		9D02B4E81A1C5ADC002799E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				OTHER_CFLAGS = "";
@@ -179,25 +211,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		70E84C2719B10B0500159159 /* Build configuration list for PBXProject "CurtaSim" */ = {
+		9D02B4D61A1C5ADC002799E3 /* Build configuration list for PBXProject "CurtaSim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				70E84C2919B10B0600159159 /* Debug */,
-				70E84C2A19B10B0600159159 /* Release */,
+				9D02B4E41A1C5ADC002799E3 /* Debug */,
+				9D02B4E51A1C5ADC002799E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		70E84C2B19B10B0600159159 /* Build configuration list for PBXLegacyTarget "CurtaSim" */ = {
+		9D02B4E61A1C5ADC002799E3 /* Build configuration list for PBXLegacyTarget "CurtaSim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				70E84C2C19B10B0600159159 /* Debug */,
-				70E84C2D19B10B0600159159 /* Release */,
+				9D02B4E71A1C5ADC002799E3 /* Debug */,
+				9D02B4E81A1C5ADC002799E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 70E84C2419B10B0500159159 /* Project object */;
+	rootObject = 9D02B4D31A1C5ADC002799E3 /* Project object */;
 }
