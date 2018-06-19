@@ -18,10 +18,7 @@
 #include "curtaModel.h"
 #include "joystick.h"
 #include "curtaUI.h"
-
-
-// Extern symbols for graphics drivers
-extern char a2e_hi;
+#include "drivers/a2_hires_drv.h"
 
 
 typedef int8_t tAction;
@@ -373,7 +370,7 @@ void initUI(void)
 
     initDevice(changeOperand, changeSelectedOperand);
 
-    tgi_install(&a2e_hi);
+    tgi_install(&a2_hires_drv);
 
     tgi_init();
     tgi_clear();
