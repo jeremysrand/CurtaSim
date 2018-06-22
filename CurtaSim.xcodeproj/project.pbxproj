@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D24616A20D8B2AE00227E1D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D24616920D8B2AE00227E1D /* main.c */; };
 		9D24616C20D8B2AE00227E1D /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 9D24616B20D8B2AE00227E1D /* Makefile */; };
 		9D24616F20D8B2AE00227E1D /* AppleCommander.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D24616E20D8B2AE00227E1D /* AppleCommander.jar */; };
 		9D24617120D8B2AE00227E1D /* createDiskImage in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D24617020D8B2AE00227E1D /* createDiskImage */; };
@@ -46,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		9D24616620D8B2AE00227E1D /* doNotBuild */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = doNotBuild; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D24616920D8B2AE00227E1D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		9D24616B20D8B2AE00227E1D /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		9D24616E20D8B2AE00227E1D /* AppleCommander.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; name = AppleCommander.jar; path = make/AppleCommander.jar; sourceTree = "<group>"; };
 		9D24617020D8B2AE00227E1D /* createDiskImage */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = createDiskImage; path = make/createDiskImage; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 		9D24616820D8B2AE00227E1D /* CurtaSim */ = {
 			isa = PBXGroup;
 			children = (
-				9D24616920D8B2AE00227E1D /* main.c */,
 				9D24618F20D8B30C00227E1D /* curta.c */,
 				9D24618B20D8B30B00227E1D /* curtaModel.c */,
 				9D24618D20D8B30B00227E1D /* curtaModel.h */,
@@ -216,7 +213,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D24616C20D8B2AE00227E1D /* Makefile in Sources */,
-				9D24616A20D8B2AE00227E1D /* main.c in Sources */,
 				9D24619220D8B30C00227E1D /* curtaModel.c in Sources */,
 				9D24619520D8B30C00227E1D /* curtaUI.c in Sources */,
 				9D24619320D8B30C00227E1D /* joystick.c in Sources */,

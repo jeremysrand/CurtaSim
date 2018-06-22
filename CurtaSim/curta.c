@@ -12,6 +12,9 @@
 int main(void)
 {
     bool timeToQuit = false;
+    
+    printInstructions();
+    
     initUI();
 
     while (!timeToQuit) {
