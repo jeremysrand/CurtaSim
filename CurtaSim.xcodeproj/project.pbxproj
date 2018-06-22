@@ -64,6 +64,7 @@
 		9D24618F20D8B30C00227E1D /* curta.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curta.c; sourceTree = "<group>"; };
 		9D24619020D8B30C00227E1D /* joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joystick.h; sourceTree = "<group>"; };
 		9D24619120D8B30C00227E1D /* curtaUI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curtaUI.c; sourceTree = "<group>"; };
+		9D65A1BF20DCA472004268B7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 			children = (
 				9D24618920D8B2C000227E1D /* curta.png */,
 				9D24618A20D8B2C000227E1D /* README.md */,
+				9D65A1BF20DCA472004268B7 /* LICENSE */,
 				9D24616820D8B2AE00227E1D /* CurtaSim */,
 				9D24616720D8B2AE00227E1D /* Products */,
 			);
