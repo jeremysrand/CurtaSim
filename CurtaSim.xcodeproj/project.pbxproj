@@ -21,6 +21,7 @@
 		9D24619320D8B30C00227E1D /* joystick.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D24618E20D8B30C00227E1D /* joystick.c */; };
 		9D24619420D8B30C00227E1D /* curta.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D24618F20D8B30C00227E1D /* curta.c */; };
 		9D24619520D8B30C00227E1D /* curtaUI.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D24619120D8B30C00227E1D /* curtaUI.c */; };
+		9D3A3EC421783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3A3EC321783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +65,8 @@
 		9D24618F20D8B30C00227E1D /* curta.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curta.c; sourceTree = "<group>"; };
 		9D24619020D8B30C00227E1D /* joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joystick.h; sourceTree = "<group>"; };
 		9D24619120D8B30C00227E1D /* curtaUI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curtaUI.c; sourceTree = "<group>"; };
+		9D3A3EC221783BEA00BE74C7 /* bt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = bt; path = make/bt; sourceTree = "<group>"; };
+		9D3A3EC321783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; name = "bastokenizer-tools-bt-0.2.0.jar"; path = "make/bastokenizer-tools-bt-0.2.0.jar"; sourceTree = "<group>"; };
 		9D45ABB620E1E564008C3F16 /* errorFilter.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = errorFilter.sh; path = make/errorFilter.sh; sourceTree = "<group>"; };
 		9D65A1BF20DCA472004268B7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D24616F20D8B2AE00227E1D /* AppleCommander.jar in Frameworks */,
+				9D3A3EC421783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				9D24616E20D8B2AE00227E1D /* AppleCommander.jar */,
+				9D3A3EC321783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar */,
+				9D3A3EC221783BEA00BE74C7 /* bt */,
 				9D24617020D8B2AE00227E1D /* createDiskImage */,
 				9D24617220D8B2AE00227E1D /* DevApple.vii */,
 				9D24617420D8B2AE00227E1D /* dos33_template.dsk */,
