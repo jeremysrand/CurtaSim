@@ -13,7 +13,6 @@
 #include <apple2.h>
 #include <joystick.h>
 #include <tgi.h>
-#include <tgi/tgi-mode.h>
 
 #include "curtaModel.h"
 #include "joystick.h"
@@ -35,12 +34,12 @@ typedef int8_t tAction;
 #define ACTION_NULL 9
 
 
-#define OPERAND_COLOR COLOR_WHITE
-#define OPERAND_OFFSET 4
-#define SLIDER_BAR_COLOR COLOR_BLUE
-#define SELECTED_SLIDER_BAR_COLOR COLOR_VIOLET
-#define SLIDER_COLOR COLOR_ORANGE
-#define SELECTED_SLIDER_COLOR COLOR_BLACK
+#define OPERAND_COLOR TGI_COLOR_WHITE
+#define OPERAND_OFFSET 12
+#define SLIDER_BAR_COLOR TGI_COLOR_BLUE
+#define SELECTED_SLIDER_BAR_COLOR TGI_COLOR_VIOLET
+#define SLIDER_COLOR TGI_COLOR_ORANGE
+#define SELECTED_SLIDER_COLOR TGI_COLOR_BLACK
 #define SLIDER_X_BORDER 8
 #define SLIDER_Y_BORDER 15
 #define SLIDER_BAR_WIDTH 12
@@ -160,7 +159,7 @@ static void drawText(char xPos, tDigit digit)
     char buffer[2];
 
     // Clear old text
-    tgi_setcolor(COLOR_BLACK);
+    tgi_setcolor(TGI_COLOR_BLACK);
     tgi_bar(xPos, 0, xPos + SLIDER_BAR_WIDTH, SLIDER_Y_BORDER - 1);
     
     // Draw text label
