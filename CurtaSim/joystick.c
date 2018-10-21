@@ -30,11 +30,11 @@ static uint8_t joystickTemp;
 static bool isButtonPressed(int8_t buttonNum)
 {
     if (buttonNum) {
-        __asm__("LDA %w", BTN1);
-        __asm__("STA %v", joystickTemp);
+        __asm__ volatile("LDA %w", BTN1);
+        __asm__ volatile("STA %v", joystickTemp);
     } else {
-        __asm__("LDA %w", BTN0);
-        __asm__("STA %v", joystickTemp);
+        __asm__ volatile("LDA %w", BTN0);
+        __asm__ volatile("STA %v", joystickTemp);
     }
     return ((joystickTemp > 127) ? true : false);
 }
@@ -42,22 +42,22 @@ static bool isButtonPressed(int8_t buttonNum)
 
 static uint8_t joystickLeftRight(void)
 {
-    __asm__("BIT %w", ROM_SWITCH);
-    __asm__("LDX #0");
-    __asm__("JSR %w", PREAD);
-    __asm__("STY %v", joystickTemp);
-    __asm__("BIT %w", RAM_SWITCH);
+    __asm__ volatile("BIT %w", ROM_SWITCH);
+    __asm__ volatile("LDX #0");
+    __asm__ volatile("JSR %w", PREAD);
+    __asm__ volatile("STY %v", joystickTemp);
+    __asm__ volatile("BIT %w", RAM_SWITCH);
     return joystickTemp;
 }
 
 
 static uint8_t joystickUpDown(void)
 {
-    __asm__("BIT %w", ROM_SWITCH);
-    __asm__("LDX #1");
-    __asm__("JSR %w", PREAD);
-    __asm__("STY %v", joystickTemp);
-    __asm__("BIT %w", RAM_SWITCH);
+    __asm__ volatile("BIT %w", ROM_SWITCH);
+    __asm__ volatile("LDX #1");
+    __asm__ volatile("JSR %w", PREAD);
+    __asm__ volatile("STY %v", joystickTemp);
+    __asm__ volatile("BIT %w", RAM_SWITCH);
     return joystickTemp;
 }
 

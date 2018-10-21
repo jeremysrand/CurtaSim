@@ -74,7 +74,7 @@ static char displayBuffer[] =
 static void playSound(int8_t freq, int8_t duration)
 {
     while (duration > 0) {
-        asm ("STA %w", 0xc030);
+        asm volatile ("STA %w", 0xc030);
         while (freq > 0) {
             freq--;
         }
@@ -365,13 +365,13 @@ static tAction getNextAction(void)
 void textMode(void)
 {
     clrscr();
-    asm ("STA %w", 0xc051);
+    asm volatile ("STA %w", 0xc051);
 }
 
 
 void graphicsMode(void)
 {
-    asm ("STA %w", 0xc050);
+    asm volatile ("STA %w", 0xc050);
 }
 
 
@@ -479,7 +479,7 @@ void redrawUI(void)
     }
     
     // Mixed text and graphics mode
-    asm ("STA %w", 0xc053);
+    asm volatile ("STA %w", 0xc053);
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printState();
 }
