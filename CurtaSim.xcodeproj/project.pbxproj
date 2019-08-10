@@ -7,141 +7,149 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D24616C20D8B2AE00227E1D /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 9D24616B20D8B2AE00227E1D /* Makefile */; };
-		9D24616F20D8B2AE00227E1D /* AppleCommander.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D24616E20D8B2AE00227E1D /* AppleCommander.jar */; };
-		9D24617120D8B2AE00227E1D /* createDiskImage in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D24617020D8B2AE00227E1D /* createDiskImage */; };
-		9D24617320D8B2AE00227E1D /* DevApple.vii in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D24617220D8B2AE00227E1D /* DevApple.vii */; };
-		9D24617520D8B2AE00227E1D /* dos33_template.dsk in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D24617420D8B2AE00227E1D /* dos33_template.dsk */; };
-		9D24617720D8B2AE00227E1D /* head.mk in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D24617620D8B2AE00227E1D /* head.mk */; };
-		9D24617920D8B2AE00227E1D /* prodos_template.dsk in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D24617820D8B2AE00227E1D /* prodos_template.dsk */; };
-		9D24617B20D8B2AE00227E1D /* tail.mk in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D24617A20D8B2AE00227E1D /* tail.mk */; };
-		9D24617D20D8B2AE00227E1D /* V2Make.scpt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D24617C20D8B2AE00227E1D /* V2Make.scpt */; };
-		9D24618020D8B2AE00227E1D /* CurtaSim.xcscheme in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D24617F20D8B2AE00227E1D /* CurtaSim.xcscheme */; };
-		9D24619220D8B30C00227E1D /* curtaModel.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D24618B20D8B30B00227E1D /* curtaModel.c */; };
-		9D24619320D8B30C00227E1D /* joystick.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D24618E20D8B30C00227E1D /* joystick.c */; };
-		9D24619420D8B30C00227E1D /* curta.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D24618F20D8B30C00227E1D /* curta.c */; };
-		9D24619520D8B30C00227E1D /* curtaUI.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D24619120D8B30C00227E1D /* curtaUI.c */; };
-		9D3A3EC421783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3A3EC321783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar */; };
+		9DAEA04822FE69490067692F /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA04722FE69490067692F /* Makefile */; };
+		9DAEA04B22FE69490067692F /* AppleCommander.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA04A22FE69490067692F /* AppleCommander.jar */; };
+		9DAEA04D22FE69490067692F /* bastokenizer-tools-bt-0.2.0.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA04C22FE69490067692F /* bastokenizer-tools-bt-0.2.0.jar */; };
+		9DAEA04F22FE69490067692F /* createDiskImage in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA04E22FE69490067692F /* createDiskImage */; };
+		9DAEA05122FE69490067692F /* bt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA05022FE69490067692F /* bt */; };
+		9DAEA05322FE69490067692F /* DevApple.vii in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA05222FE69490067692F /* DevApple.vii */; };
+		9DAEA05522FE69490067692F /* dos33_template.dsk in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA05422FE69490067692F /* dos33_template.dsk */; };
+		9DAEA05722FE69490067692F /* errorFilter.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA05622FE69490067692F /* errorFilter.sh */; };
+		9DAEA05922FE69490067692F /* head.mk in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA05822FE69490067692F /* head.mk */; };
+		9DAEA05B22FE69490067692F /* prodos_template.dsk in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA05A22FE69490067692F /* prodos_template.dsk */; };
+		9DAEA05D22FE69490067692F /* tail.mk in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA05C22FE69490067692F /* tail.mk */; };
+		9DAEA05F22FE69490067692F /* V2Make.scpt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA05E22FE69490067692F /* V2Make.scpt */; };
+		9DAEA06222FE69490067692F /* CurtaSim.xcscheme in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9DAEA06122FE69490067692F /* CurtaSim.xcscheme */; };
+		9DAEA07B22FE696C0067692F /* curtaModel.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA07422FE696C0067692F /* curtaModel.c */; };
+		9DAEA07C22FE696C0067692F /* curta.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA07622FE696C0067692F /* curta.c */; };
+		9DAEA07D22FE696C0067692F /* curtaUI.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA07822FE696C0067692F /* curtaUI.c */; };
+		9DAEA07E22FE696C0067692F /* joystick.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA07A22FE696C0067692F /* joystick.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9D24616420D8B2AE00227E1D /* CopyFiles */ = {
+		9DAEA04122FE69490067692F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				9D24617120D8B2AE00227E1D /* createDiskImage in CopyFiles */,
-				9D24617320D8B2AE00227E1D /* DevApple.vii in CopyFiles */,
-				9D24617520D8B2AE00227E1D /* dos33_template.dsk in CopyFiles */,
-				9D24617B20D8B2AE00227E1D /* tail.mk in CopyFiles */,
-				9D24617D20D8B2AE00227E1D /* V2Make.scpt in CopyFiles */,
-				9D24617920D8B2AE00227E1D /* prodos_template.dsk in CopyFiles */,
-				9D24617720D8B2AE00227E1D /* head.mk in CopyFiles */,
-				9D24618020D8B2AE00227E1D /* CurtaSim.xcscheme in CopyFiles */,
+				9DAEA05B22FE69490067692F /* prodos_template.dsk in CopyFiles */,
+				9DAEA05122FE69490067692F /* bt in CopyFiles */,
+				9DAEA05522FE69490067692F /* dos33_template.dsk in CopyFiles */,
+				9DAEA04F22FE69490067692F /* createDiskImage in CopyFiles */,
+				9DAEA05F22FE69490067692F /* V2Make.scpt in CopyFiles */,
+				9DAEA05922FE69490067692F /* head.mk in CopyFiles */,
+				9DAEA05322FE69490067692F /* DevApple.vii in CopyFiles */,
+				9DAEA06222FE69490067692F /* CurtaSim.xcscheme in CopyFiles */,
+				9DAEA05722FE69490067692F /* errorFilter.sh in CopyFiles */,
+				9DAEA05D22FE69490067692F /* tail.mk in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9D24616620D8B2AE00227E1D /* doNotBuild */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = doNotBuild; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D24616B20D8B2AE00227E1D /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		9D24616E20D8B2AE00227E1D /* AppleCommander.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; name = AppleCommander.jar; path = make/AppleCommander.jar; sourceTree = "<group>"; };
-		9D24617020D8B2AE00227E1D /* createDiskImage */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = createDiskImage; path = make/createDiskImage; sourceTree = "<group>"; };
-		9D24617220D8B2AE00227E1D /* DevApple.vii */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = DevApple.vii; path = make/DevApple.vii; sourceTree = "<group>"; };
-		9D24617420D8B2AE00227E1D /* dos33_template.dsk */ = {isa = PBXFileReference; lastKnownFileType = file; name = dos33_template.dsk; path = make/dos33_template.dsk; sourceTree = "<group>"; };
-		9D24617620D8B2AE00227E1D /* head.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = head.mk; path = make/head.mk; sourceTree = "<group>"; };
-		9D24617820D8B2AE00227E1D /* prodos_template.dsk */ = {isa = PBXFileReference; lastKnownFileType = file; name = prodos_template.dsk; path = make/prodos_template.dsk; sourceTree = "<group>"; };
-		9D24617A20D8B2AE00227E1D /* tail.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = tail.mk; path = make/tail.mk; sourceTree = "<group>"; };
-		9D24617C20D8B2AE00227E1D /* V2Make.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = V2Make.scpt; path = make/V2Make.scpt; sourceTree = "<group>"; };
-		9D24617F20D8B2AE00227E1D /* CurtaSim.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = CurtaSim.xcscheme; path = CurtaSim.xcodeproj/xcshareddata/xcschemes/CurtaSim.xcscheme; sourceTree = SOURCE_ROOT; };
-		9D24618920D8B2C000227E1D /* curta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = curta.png; sourceTree = "<group>"; };
-		9D24618A20D8B2C000227E1D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		9D24618B20D8B30B00227E1D /* curtaModel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curtaModel.c; sourceTree = "<group>"; };
-		9D24618C20D8B30B00227E1D /* curtaUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curtaUI.h; sourceTree = "<group>"; };
-		9D24618D20D8B30B00227E1D /* curtaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curtaModel.h; sourceTree = "<group>"; };
-		9D24618E20D8B30C00227E1D /* joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = joystick.c; sourceTree = "<group>"; };
-		9D24618F20D8B30C00227E1D /* curta.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curta.c; sourceTree = "<group>"; };
-		9D24619020D8B30C00227E1D /* joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joystick.h; sourceTree = "<group>"; };
-		9D24619120D8B30C00227E1D /* curtaUI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curtaUI.c; sourceTree = "<group>"; };
-		9D3A3EC221783BEA00BE74C7 /* bt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = bt; path = make/bt; sourceTree = "<group>"; };
-		9D3A3EC321783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; name = "bastokenizer-tools-bt-0.2.0.jar"; path = "make/bastokenizer-tools-bt-0.2.0.jar"; sourceTree = "<group>"; };
-		9D45ABB620E1E564008C3F16 /* errorFilter.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = errorFilter.sh; path = make/errorFilter.sh; sourceTree = "<group>"; };
-		9D65A1BF20DCA472004268B7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		9DAEA03B22FE69490067692F /* CurtaSim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CurtaSim; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DAEA03E22FE69490067692F /* CurtaSim.dsk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CurtaSim.dsk; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DAEA04322FE69490067692F /* doNotBuild */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = doNotBuild; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DAEA04722FE69490067692F /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		9DAEA04A22FE69490067692F /* AppleCommander.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; name = AppleCommander.jar; path = make/AppleCommander.jar; sourceTree = "<group>"; };
+		9DAEA04C22FE69490067692F /* bastokenizer-tools-bt-0.2.0.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; name = "bastokenizer-tools-bt-0.2.0.jar"; path = "make/bastokenizer-tools-bt-0.2.0.jar"; sourceTree = "<group>"; };
+		9DAEA04E22FE69490067692F /* createDiskImage */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = createDiskImage; path = make/createDiskImage; sourceTree = "<group>"; };
+		9DAEA05022FE69490067692F /* bt */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = bt; path = make/bt; sourceTree = "<group>"; };
+		9DAEA05222FE69490067692F /* DevApple.vii */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = DevApple.vii; path = make/DevApple.vii; sourceTree = "<group>"; };
+		9DAEA05422FE69490067692F /* dos33_template.dsk */ = {isa = PBXFileReference; lastKnownFileType = file; name = dos33_template.dsk; path = make/dos33_template.dsk; sourceTree = "<group>"; };
+		9DAEA05622FE69490067692F /* errorFilter.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = errorFilter.sh; path = make/errorFilter.sh; sourceTree = "<group>"; };
+		9DAEA05822FE69490067692F /* head.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = head.mk; path = make/head.mk; sourceTree = "<group>"; };
+		9DAEA05A22FE69490067692F /* prodos_template.dsk */ = {isa = PBXFileReference; lastKnownFileType = file; name = prodos_template.dsk; path = make/prodos_template.dsk; sourceTree = "<group>"; };
+		9DAEA05C22FE69490067692F /* tail.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = tail.mk; path = make/tail.mk; sourceTree = "<group>"; };
+		9DAEA05E22FE69490067692F /* V2Make.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = V2Make.scpt; path = make/V2Make.scpt; sourceTree = "<group>"; };
+		9DAEA06122FE69490067692F /* CurtaSim.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = CurtaSim.xcscheme; path = CurtaSim.xcodeproj/xcshareddata/xcschemes/CurtaSim.xcscheme; sourceTree = SOURCE_ROOT; };
+		9DAEA07122FE695D0067692F /* curta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = curta.png; sourceTree = "<group>"; };
+		9DAEA07222FE695D0067692F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9DAEA07322FE695E0067692F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		9DAEA07422FE696C0067692F /* curtaModel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curtaModel.c; sourceTree = "<group>"; };
+		9DAEA07522FE696C0067692F /* curtaUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curtaUI.h; sourceTree = "<group>"; };
+		9DAEA07622FE696C0067692F /* curta.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curta.c; sourceTree = "<group>"; };
+		9DAEA07722FE696C0067692F /* joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joystick.h; sourceTree = "<group>"; };
+		9DAEA07822FE696C0067692F /* curtaUI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curtaUI.c; sourceTree = "<group>"; };
+		9DAEA07922FE696C0067692F /* curtaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curtaModel.h; sourceTree = "<group>"; };
+		9DAEA07A22FE696C0067692F /* joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = joystick.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9D24616320D8B2AE00227E1D /* Frameworks */ = {
+		9DAEA04022FE69490067692F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D24616F20D8B2AE00227E1D /* AppleCommander.jar in Frameworks */,
-				9D3A3EC421783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar in Frameworks */,
+				9DAEA04B22FE69490067692F /* AppleCommander.jar in Frameworks */,
+				9DAEA04D22FE69490067692F /* bastokenizer-tools-bt-0.2.0.jar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9D24615C20D8B2AE00227E1D = {
+		9DAEA03422FE69490067692F = {
 			isa = PBXGroup;
 			children = (
-				9D24618920D8B2C000227E1D /* curta.png */,
-				9D24618A20D8B2C000227E1D /* README.md */,
-				9D65A1BF20DCA472004268B7 /* LICENSE */,
-				9D24616820D8B2AE00227E1D /* CurtaSim */,
-				9D24616720D8B2AE00227E1D /* Products */,
+				9DAEA07122FE695D0067692F /* curta.png */,
+				9DAEA07322FE695E0067692F /* LICENSE */,
+				9DAEA07222FE695D0067692F /* README.md */,
+				9DAEA04422FE69490067692F /* CurtaSim */,
+				9DAEA03C22FE69490067692F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9D24616720D8B2AE00227E1D /* Products */ = {
+		9DAEA03C22FE69490067692F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9D24616620D8B2AE00227E1D /* doNotBuild */,
+				9DAEA03B22FE69490067692F /* CurtaSim */,
+				9DAEA03E22FE69490067692F /* CurtaSim.dsk */,
+				9DAEA04322FE69490067692F /* doNotBuild */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9D24616820D8B2AE00227E1D /* CurtaSim */ = {
+		9DAEA04422FE69490067692F /* CurtaSim */ = {
 			isa = PBXGroup;
 			children = (
-				9D24618F20D8B30C00227E1D /* curta.c */,
-				9D24618B20D8B30B00227E1D /* curtaModel.c */,
-				9D24618D20D8B30B00227E1D /* curtaModel.h */,
-				9D24619120D8B30C00227E1D /* curtaUI.c */,
-				9D24618C20D8B30B00227E1D /* curtaUI.h */,
-				9D24618E20D8B30C00227E1D /* joystick.c */,
-				9D24619020D8B30C00227E1D /* joystick.h */,
-				9D24616B20D8B2AE00227E1D /* Makefile */,
-				9D24616D20D8B2AE00227E1D /* make */,
-				9D24617E20D8B2AE00227E1D /* Supporting Files */,
+				9DAEA04722FE69490067692F /* Makefile */,
+				9DAEA07622FE696C0067692F /* curta.c */,
+				9DAEA07422FE696C0067692F /* curtaModel.c */,
+				9DAEA07922FE696C0067692F /* curtaModel.h */,
+				9DAEA07822FE696C0067692F /* curtaUI.c */,
+				9DAEA07522FE696C0067692F /* curtaUI.h */,
+				9DAEA07A22FE696C0067692F /* joystick.c */,
+				9DAEA07722FE696C0067692F /* joystick.h */,
+				9DAEA04922FE69490067692F /* make */,
+				9DAEA06022FE69490067692F /* Supporting Files */,
 			);
 			path = CurtaSim;
 			sourceTree = "<group>";
 		};
-		9D24616D20D8B2AE00227E1D /* make */ = {
+		9DAEA04922FE69490067692F /* make */ = {
 			isa = PBXGroup;
 			children = (
-				9D24616E20D8B2AE00227E1D /* AppleCommander.jar */,
-				9D3A3EC321783BEA00BE74C7 /* bastokenizer-tools-bt-0.2.0.jar */,
-				9D3A3EC221783BEA00BE74C7 /* bt */,
-				9D24617020D8B2AE00227E1D /* createDiskImage */,
-				9D24617220D8B2AE00227E1D /* DevApple.vii */,
-				9D24617420D8B2AE00227E1D /* dos33_template.dsk */,
-				9D45ABB620E1E564008C3F16 /* errorFilter.sh */,
-				9D24617620D8B2AE00227E1D /* head.mk */,
-				9D24617820D8B2AE00227E1D /* prodos_template.dsk */,
-				9D24617A20D8B2AE00227E1D /* tail.mk */,
-				9D24617C20D8B2AE00227E1D /* V2Make.scpt */,
+				9DAEA04A22FE69490067692F /* AppleCommander.jar */,
+				9DAEA04C22FE69490067692F /* bastokenizer-tools-bt-0.2.0.jar */,
+				9DAEA04E22FE69490067692F /* createDiskImage */,
+				9DAEA05022FE69490067692F /* bt */,
+				9DAEA05222FE69490067692F /* DevApple.vii */,
+				9DAEA05422FE69490067692F /* dos33_template.dsk */,
+				9DAEA05622FE69490067692F /* errorFilter.sh */,
+				9DAEA05822FE69490067692F /* head.mk */,
+				9DAEA05A22FE69490067692F /* prodos_template.dsk */,
+				9DAEA05C22FE69490067692F /* tail.mk */,
+				9DAEA05E22FE69490067692F /* V2Make.scpt */,
 			);
 			name = make;
 			sourceTree = "<group>";
 		};
-		9D24617E20D8B2AE00227E1D /* Supporting Files */ = {
+		9DAEA06022FE69490067692F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9D24617F20D8B2AE00227E1D /* CurtaSim.xcscheme */,
+				9DAEA06122FE69490067692F /* CurtaSim.xcscheme */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -149,10 +157,10 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		9D24616120D8B2AE00227E1D /* CurtaSim */ = {
+		9DAEA03922FE69490067692F /* CurtaSim */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "-C CurtaSim $(ACTION)";
-			buildConfigurationList = 9D24618320D8B2AE00227E1D /* Build configuration list for PBXLegacyTarget "CurtaSim" */;
+			buildConfigurationList = 9DAEA06522FE69490067692F /* Build configuration list for PBXLegacyTarget "CurtaSim" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
@@ -165,13 +173,41 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		9D24616520D8B2AE00227E1D /* doNotBuild */ = {
+		9DAEA03A22FE69490067692F /* Binary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9D24618620D8B2AE00227E1D /* Build configuration list for PBXNativeTarget "doNotBuild" */;
+			buildConfigurationList = 9DAEA06822FE69490067692F /* Build configuration list for PBXNativeTarget "Binary" */;
 			buildPhases = (
-				9D24616220D8B2AE00227E1D /* Sources */,
-				9D24616320D8B2AE00227E1D /* Frameworks */,
-				9D24616420D8B2AE00227E1D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Binary;
+			productName = Binary;
+			productReference = 9DAEA03B22FE69490067692F /* CurtaSim */;
+			productType = "com.apple.product-type.tool";
+		};
+		9DAEA03D22FE69490067692F /* DiskImage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DAEA06B22FE69490067692F /* Build configuration list for PBXNativeTarget "DiskImage" */;
+			buildPhases = (
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DiskImage;
+			productName = DiskImage;
+			productReference = 9DAEA03E22FE69490067692F /* CurtaSim.dsk */;
+			productType = "com.apple.product-type.tool";
+		};
+		9DAEA04222FE69490067692F /* doNotBuild */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DAEA06E22FE69490067692F /* Build configuration list for PBXNativeTarget "doNotBuild" */;
+			buildPhases = (
+				9DAEA03F22FE69490067692F /* Sources */,
+				9DAEA04022FE69490067692F /* Frameworks */,
+				9DAEA04122FE69490067692F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -179,61 +215,69 @@
 			);
 			name = doNotBuild;
 			productName = doNotBuild;
-			productReference = 9D24616620D8B2AE00227E1D /* doNotBuild */;
+			productReference = 9DAEA04322FE69490067692F /* doNotBuild */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9D24615D20D8B2AE00227E1D /* Project object */ = {
+		9DAEA03522FE69490067692F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Jeremy Rand";
 				TargetAttributes = {
-					9D24616120D8B2AE00227E1D = {
-						CreatedOnToolsVersion = 9.4.1;
+					9DAEA03922FE69490067692F = {
+						CreatedOnToolsVersion = 10.3;
 					};
-					9D24616520D8B2AE00227E1D = {
-						CreatedOnToolsVersion = 9.4.1;
+					9DAEA03A22FE69490067692F = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					9DAEA03D22FE69490067692F = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					9DAEA04222FE69490067692F = {
+						CreatedOnToolsVersion = 10.3;
 					};
 				};
 			};
-			buildConfigurationList = 9D24616020D8B2AE00227E1D /* Build configuration list for PBXProject "CurtaSim" */;
+			buildConfigurationList = 9DAEA03822FE69490067692F /* Build configuration list for PBXProject "CurtaSim" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 9D24615C20D8B2AE00227E1D;
-			productRefGroup = 9D24616720D8B2AE00227E1D /* Products */;
+			mainGroup = 9DAEA03422FE69490067692F;
+			productRefGroup = 9DAEA03C22FE69490067692F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9D24616120D8B2AE00227E1D /* CurtaSim */,
-				9D24616520D8B2AE00227E1D /* doNotBuild */,
+				9DAEA03922FE69490067692F /* CurtaSim */,
+				9DAEA03A22FE69490067692F /* Binary */,
+				9DAEA03D22FE69490067692F /* DiskImage */,
+				9DAEA04222FE69490067692F /* doNotBuild */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9D24616220D8B2AE00227E1D /* Sources */ = {
+		9DAEA03F22FE69490067692F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D24616C20D8B2AE00227E1D /* Makefile in Sources */,
-				9D24619220D8B30C00227E1D /* curtaModel.c in Sources */,
-				9D24619520D8B30C00227E1D /* curtaUI.c in Sources */,
-				9D24619320D8B30C00227E1D /* joystick.c in Sources */,
-				9D24619420D8B30C00227E1D /* curta.c in Sources */,
+				9DAEA07C22FE696C0067692F /* curta.c in Sources */,
+				9DAEA04822FE69490067692F /* Makefile in Sources */,
+				9DAEA07E22FE696C0067692F /* joystick.c in Sources */,
+				9DAEA07B22FE696C0067692F /* curtaModel.c in Sources */,
+				9DAEA07D22FE696C0067692F /* curtaUI.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9D24618120D8B2AE00227E1D /* Debug */ = {
+		9DAEA06322FE69490067692F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -283,12 +327,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
-		9D24618220D8B2AE00227E1D /* Release */ = {
+		9DAEA06422FE69490067692F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -333,10 +378,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 			};
 			name = Release;
 		};
-		9D24618420D8B2AE00227E1D /* Debug */ = {
+		9DAEA06622FE69490067692F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -351,7 +397,7 @@
 			};
 			name = Debug;
 		};
-		9D24618520D8B2AE00227E1D /* Release */ = {
+		9DAEA06722FE69490067692F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -363,24 +409,66 @@
 			};
 			name = Release;
 		};
-		9D24618720D8B2AE00227E1D /* Debug */ = {
+		9DAEA06922FE69490067692F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VD9FGCW36C;
+				PRODUCT_NAME = CurtaSim;
+			};
+			name = Debug;
+		};
+		9DAEA06A22FE69490067692F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VD9FGCW36C;
+				PRODUCT_NAME = CurtaSim;
+			};
+			name = Release;
+		};
+		9DAEA06C22FE69490067692F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VD9FGCW36C;
+				PRODUCT_NAME = CurtaSim.dsk;
+			};
+			name = Debug;
+		};
+		9DAEA06D22FE69490067692F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VD9FGCW36C;
+				PRODUCT_NAME = CurtaSim.dsk;
+			};
+			name = Release;
+		};
+		9DAEA06F22FE69490067692F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VD9FGCW36C;
 				GCC_PREPROCESSOR_DEFINITIONS = "__fastcall__=\"\"";
-				HEADER_SEARCH_PATHS = /usr/local/lib/cc65/include;
+				HEADER_SEARCH_PATHS = (
+					$TEMP_ROOT/CurtaSim.build/$CONFIGURATION/CurtaSim.build/DerivedSources,
+					/usr/local/share/cc65/include,
+				);
 				PRODUCT_NAME = doNotBuild;
 			};
 			name = Debug;
 		};
-		9D24618820D8B2AE00227E1D /* Release */ = {
+		9DAEA07022FE69490067692F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VD9FGCW36C;
 				GCC_PREPROCESSOR_DEFINITIONS = "__fastcall__=\"\"";
-				HEADER_SEARCH_PATHS = /usr/local/lib/cc65/include;
+				HEADER_SEARCH_PATHS = (
+					$TEMP_ROOT/CurtaSim.build/$CONFIGURATION/CurtaSim.build/DerivedSources,
+					/usr/local/share/cc65/include,
+				);
 				PRODUCT_NAME = doNotBuild;
 			};
 			name = Release;
@@ -388,34 +476,52 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9D24616020D8B2AE00227E1D /* Build configuration list for PBXProject "CurtaSim" */ = {
+		9DAEA03822FE69490067692F /* Build configuration list for PBXProject "CurtaSim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9D24618120D8B2AE00227E1D /* Debug */,
-				9D24618220D8B2AE00227E1D /* Release */,
+				9DAEA06322FE69490067692F /* Debug */,
+				9DAEA06422FE69490067692F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9D24618320D8B2AE00227E1D /* Build configuration list for PBXLegacyTarget "CurtaSim" */ = {
+		9DAEA06522FE69490067692F /* Build configuration list for PBXLegacyTarget "CurtaSim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9D24618420D8B2AE00227E1D /* Debug */,
-				9D24618520D8B2AE00227E1D /* Release */,
+				9DAEA06622FE69490067692F /* Debug */,
+				9DAEA06722FE69490067692F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9D24618620D8B2AE00227E1D /* Build configuration list for PBXNativeTarget "doNotBuild" */ = {
+		9DAEA06822FE69490067692F /* Build configuration list for PBXNativeTarget "Binary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9D24618720D8B2AE00227E1D /* Debug */,
-				9D24618820D8B2AE00227E1D /* Release */,
+				9DAEA06922FE69490067692F /* Debug */,
+				9DAEA06A22FE69490067692F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DAEA06B22FE69490067692F /* Build configuration list for PBXNativeTarget "DiskImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DAEA06C22FE69490067692F /* Debug */,
+				9DAEA06D22FE69490067692F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DAEA06E22FE69490067692F /* Build configuration list for PBXNativeTarget "doNotBuild" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DAEA06F22FE69490067692F /* Debug */,
+				9DAEA07022FE69490067692F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9D24615D20D8B2AE00227E1D /* Project object */;
+	rootObject = 9DAEA03522FE69490067692F /* Project object */;
 }
